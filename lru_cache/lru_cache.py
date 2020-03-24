@@ -23,8 +23,7 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        # Pull value from dict by key
-        # update position in list or return None
+
         if key in self.storage:
             node = self.storage[key]
             self.order.move_to_front(node)
@@ -43,22 +42,24 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        # Add pair to the cache - add to dict and to the DLL nodes
-        # Mark as most recently used - Put in head of DLL
-        # If at max capacity dump oldest - remove from DLL tail
-        # 1. If already exists, overwrite value - update dict
+
+
+        # if the key is in the store, replace the value with the tuple
+        # add it to the front
         if key in self.storage:
             node = self.storage[key]
             node.value = (key, value)
             self.order.move_to_front(node)
             return
 
+        # whenever the size equals the limits delete the last item in the dll from the storage
+        # shrink list
         if self.size == self.limit:
             del self.storage[self.order.tail.value[0]]
             self.order.remove_from_tail()
             self.size -= 1
 
-            
+        # create new item with the tuple, add the item to the storage    
         self.order.add_to_head((key, value))
         self.storage[key] = self.order.head
         self.size += 1
