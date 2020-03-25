@@ -59,7 +59,10 @@ class LRUCache:
             self.order.remove_from_tail()
             self.size -= 1
 
-        # create new item with the tuple, add the item to the storage    
-        self.order.add_to_head((key, value))
-        self.storage[key] = self.order.head
-        self.size += 1
+        # create new item with the tuple, add the item to the storage
+
+        if self.size < self.limit:
+
+            self.order.add_to_head((key, value))
+            self.storage[key] = self.order.head
+            self.size += 1
