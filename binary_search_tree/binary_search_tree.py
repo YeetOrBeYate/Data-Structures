@@ -57,12 +57,12 @@ class BinarySearchTree:
         cb(self.value)
         
         # if right is present
-        if self.right is not None:
-             self.right.for_each(cb)
+        if self.left:
+             self.left.for_each(cb)
             
         # if left is present
-        if self.left is not None:
-             self.left.for_each(cb)
+        if self.right:
+             self.right.for_each(cb)
 
 
 
