@@ -35,10 +35,9 @@ class BinarySearchTree:
         # if right is there
         elif self.right is not None:
             return self.right.contains(target)
-
+        # if left is there
         elif self.left is not None:
             return self.left.contains(target)
-
         else:
             return False
 
@@ -54,7 +53,18 @@ class BinarySearchTree:
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        
+        cb(self.value)
+        
+        # if right is present
+        if self.right is not None:
+             self.right.for_each(cb)
+            
+        # if left is present
+        if self.left is not None:
+             self.left.for_each(cb)
+
+
 
     # DAY 2 Project -----------------------
 
