@@ -23,7 +23,7 @@ class Queue:
         else:
             return None
 
-    def len(self):
+    def __len__(self):
         return self.storage.length
 
 
