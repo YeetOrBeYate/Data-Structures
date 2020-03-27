@@ -74,10 +74,12 @@ class BinarySearchTree:
         
         if node.left:
             self.in_order_print(node.left)
+            
+        print(node.value)
 
         if node.right:
             self.in_order_print(node.right)
-        print(node.value)
+            
 
 
 
